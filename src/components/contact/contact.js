@@ -4,9 +4,10 @@ import "./contact.css";
 export const Contact = ({
   name: { first, last },
   picture: { thumbnail },
-  onClick
+  onClick,
+  text,
 }) => (
   <div className="contact" onClick={onClick}>
-    <Person name={`${first} ${last}`} image={thumbnail} />
+    <Person name={`${first} ${last}`} image={thumbnail} text={text} />
   </div>
 );

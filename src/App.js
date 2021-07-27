@@ -16,26 +16,19 @@ function App() {
   const [messages, setMessages] = useState({});
   const [contacts, setContacts] = useState([]);
   const addMessage = (contactId, message) => {
+    const oldMessages = messages[contactId] || [];
     const response = [];
     const responseCount = Math.floor(Math.random() * 3);
     for (let i = 0; i < responseCount; i++) {
       response.push({
         incoming: true,
-        text: "response message",
-        datetime: new Intl.DateTimeFormat("en", {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-          hour12: false,
-        }).format(new Date()),
+        text: `response message ${oldMessages.length}-${i + 1}`,
+        datetime: new Date(),
       });
     }
     setMessages({
       ...messages,
-      [contactId]: [...(messages[contactId] || []), message, ...response],
+      [contactId]: [...oldMessages, message, ...response],
     });
   };
 

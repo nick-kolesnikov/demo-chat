@@ -10,21 +10,16 @@ export const Chat = () => {
   const { selectedContact, messages, addMessage } = useContext(ChatContext);
 
   const elementRef = useRef();
-  useEffect(() => elementRef.current && elementRef.current.scrollIntoView(), [flipper]);
+  useEffect(
+    () => elementRef.current && elementRef.current.scrollIntoView(),
+    [flipper]
+  );
 
   const submitHandler = (e) => {
     e.preventDefault();
     addMessage(selectedContact.login.uuid, {
       text,
-      datetime: new Intl.DateTimeFormat("en", {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-        hour12: false,
-      }).format(new Date()),
+      datetime: new Date(),
     });
     setText("");
     flip(!flipper);

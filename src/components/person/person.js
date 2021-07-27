@@ -7,7 +7,7 @@ export const Person = ({ name, image, text }) => {
       <Avatar image={image} />
       <div className="details">
         <span className="name">{name}</span>
-        {text && <span className="text">{text}</span>}
+        {text && <em className="text">{text}</em>}
       </div>
     </div>
   );

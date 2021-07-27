@@ -1,18 +1,18 @@
 .person {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .details {
-    display: flex;
-    flex-direction: column;
-    margin-left: 16px;
-}
-
-.name {
-
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
 }
 
 .text {
-
+  font-size: 12px;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
