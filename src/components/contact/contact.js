@@ -2,11 +2,11 @@ import { Person } from "../person/person";
 import "./contact.css";
 
 export const Contact = ({
-  login: { uuid },
   name: { first, last },
   picture: { thumbnail },
+  onClick
 }) => (
-  <div className="contact" key={uuid}>
+  <div className="contact" onClick={onClick}>
     <Person name={`${first} ${last}`} image={thumbnail} />
   </div>
 );

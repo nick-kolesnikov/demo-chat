@@ -1,14 +1,16 @@
 .message {
-  align-self: flex-start;
+  align-self: flex-end;
   display: flex;
   flex-direction: column;
-  min-width: 95px;
+  min-width: 120px;
+  max-width: 85%; 
 }
 
 .message p {
   margin: 0;
   padding: 12px;
   background-color: var(--dark);
+  text-align: left;
 }
 
 .message span {
@@ -17,7 +19,7 @@
 }
 
 .message.incoming {
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .message + .message {
