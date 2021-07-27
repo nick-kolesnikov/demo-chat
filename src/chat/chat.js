@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ChatContext } from "../App";
 import { Avatar } from "../components/avatar/avatar";
 import { Message } from "../components/message/message";
@@ -6,7 +6,11 @@ import "./chat.css";
 
 export const Chat = () => {
   const [text, setText] = useState("");
+  const [flipper, flip] = useState(false);
   const { selectedContact, messages, addMessage } = useContext(ChatContext);
+
+  const elementRef = useRef();
+  useEffect(() => elementRef.current.scrollIntoView(), [flipper]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,6 +27,7 @@ export const Chat = () => {
       }).format(new Date()),
     });
     setText("");
+    flip(!flipper);
   };
 
   const keyUpHandler = (e) => {
@@ -49,6 +54,7 @@ export const Chat = () => {
         {(messages[uuid] || []).map((message, i) => (
           <Message key={i} {...message} />
         ))}
+        <span ref={elementRef} />
       </section>
       <form onSubmit={submitHandler}>
         <textarea
