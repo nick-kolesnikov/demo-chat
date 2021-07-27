@@ -10,7 +10,7 @@ export const Chat = () => {
   const { selectedContact, messages, addMessage } = useContext(ChatContext);
 
   const elementRef = useRef();
-  useEffect(() => elementRef.current.scrollIntoView(), [flipper]);
+  useEffect(() => elementRef.current && elementRef.current.scrollIntoView(), [flipper]);
 
   const submitHandler = (e) => {
     e.preventDefault();
