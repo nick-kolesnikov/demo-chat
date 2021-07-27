@@ -1,0 +1,22 @@
+aside {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+}
+
+.contacts-header img {
+    margin-right: 16px;
+}
+
+.contact-list {
+    flex-grow: 1;
+    overflow-y: scroll;
+    padding: 0 24px 12px;
+}
+
+footer {
+    font-size: 12px;
+    text-align: center;
+    background-color: var(--dark);
+}

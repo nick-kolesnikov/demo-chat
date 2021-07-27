@@ -1,0 +1,25 @@
+.message {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-width: 95px;
+}
+
+.message p {
+  margin: 0;
+  padding: 12px;
+  background-color: var(--dark);
+}
+
+.message span {
+  align-self: flex-end;
+  font-size: 12px;
+}
+
+.message.incoming {
+  align-self: flex-end;
+}
+
+.message + .message {
+  margin-top: 8px;
+}

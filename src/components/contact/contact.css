@@ -1,0 +1,11 @@
+.contact {
+  display: flex;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--text);
+  cursor: pointer;
+}
+
+.contact:hover {
+  transform: scale(1.1);
+  transition: transform 0.25s;
+}
