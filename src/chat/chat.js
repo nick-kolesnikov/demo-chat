@@ -25,6 +25,12 @@ export const Chat = () => {
     setText("");
   };
 
+  const keyUpHandler = (e) => {
+    if (e.key === "Enter" && e.ctrlKey) {
+      submitHandler(e);
+    }
+  };
+
   if (!selectedContact) return <main>Select contact for chatting</main>;
 
   const {
@@ -48,6 +54,7 @@ export const Chat = () => {
         <textarea
           value={text}
           onChange={({ target: { value } }) => setText(value)}
+          onKeyUp={keyUpHandler}
         />
         <button>Send</button>
       </form>
