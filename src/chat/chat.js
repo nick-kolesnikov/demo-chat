@@ -39,7 +39,11 @@ export const Chat = () => {
         <Avatar image={thumbnail} />
         {first} {last}
       </header>
-      <section>{(messages[uuid] || []).map(Message)}</section>
+      <section>
+        {(messages[uuid] || []).map((message, i) => (
+          <Message key={i} {...message} />
+        ))}
+      </section>
       <form onSubmit={submitHandler}>
         <textarea
           value={text}
