@@ -1,6 +1,6 @@
 import "./message.css";
 
-export const Message = ({ text, datetime, incoming }) => {
+export const Message = ({ text, timestamp, incoming }) => {
   const classes = `message${incoming ? " incoming" : ""}`;
   return (
     <div className={classes}>
@@ -14,7 +14,7 @@ export const Message = ({ text, datetime, incoming }) => {
           minute: "numeric",
           second: "numeric",
           hour12: false,
-        }).format(datetime)}
+        }).format(timestamp)}
       </span>
     </div>
   );

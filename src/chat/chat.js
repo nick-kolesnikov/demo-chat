@@ -17,10 +17,7 @@ export const Chat = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    addMessage(selectedContact.login.uuid, {
-      text,
-      datetime: new Date(),
-    });
+    addMessage(selectedContact.login.uuid, text);
     setText("");
     flip(!flipper);
   };

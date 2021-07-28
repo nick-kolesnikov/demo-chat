@@ -5,7 +5,12 @@ import { Contact } from "../components/contact/contact";
 import "./contacts.css";
 
 export const Contacts = () => {
-  const { contacts, setSelectedContact, messages } = useContext(ChatContext);
+  const { contacts, setSelectedContact } = useContext(ChatContext);
+  const sortedContacts = Object.values(contacts).sort(
+    (a, b) =>
+      (b.lastMessage?.timestamp.getTime() || 0) -
+      (a.lastMessage?.timestamp.getTime() || 0)
+  );
 
   return (
     <aside>
@@ -14,14 +19,12 @@ export const Contacts = () => {
         Your name
       </header>
       <div className="contact-list">
-        {contacts.map((contact) => {
-          const msgs = messages[contact.login.uuid] || [{ text: "" }];
-          const lastMessage = msgs[msgs.length - 1].text;
+        {sortedContacts.map((contact) => {
           return (
             <Contact
               key={contact.login.uuid}
               {...contact}
-              text={lastMessage}
+              text={contact.lastMessage?.text}
               onClick={() => setSelectedContact(contact)}
             />
           );
