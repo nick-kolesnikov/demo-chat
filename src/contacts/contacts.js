@@ -4,12 +4,13 @@ import { Avatar } from "../components/avatar/avatar";
 import { Contact } from "../components/contact/contact";
 import "./contacts.css";
 
+const getDateForSort = (contact) =>
+    contact.lastMessage?.timestamp.getTime() || 0;
+
 export const Contacts = () => {
   const { contacts, setSelectedContact } = useContext(ChatContext);
   const sortedContacts = Object.values(contacts).sort(
-    (a, b) =>
-      (b.lastMessage?.timestamp.getTime() || 0) -
-      (a.lastMessage?.timestamp.getTime() || 0)
+    (a, b) => getDateForSort(b) - getDateForSort(a)
   );
 
   return (
@@ -19,16 +20,14 @@ export const Contacts = () => {
         Your name
       </header>
       <div className="contact-list">
-        {sortedContacts.map((contact) => {
-          return (
-            <Contact
-              key={contact.login.uuid}
-              {...contact}
-              text={contact.lastMessage?.text}
-              onClick={() => setSelectedContact(contact)}
-            />
-          );
-        })}
+        {sortedContacts.map((contact) => (
+          <Contact
+            key={contact.login.uuid}
+            {...contact}
+            text={contact.lastMessage?.text}
+            onClick={() => setSelectedContact(contact)}
+          />
+        ))}
       </div>
       <footer>© demo-chat</footer>
     </aside>
