@@ -9,6 +9,7 @@ export const ChatContext = createContext({
   messages: {},
   setSelectedContact: () => {},
   addMessage: () => {},
+  addDraft: () => {}
 });
 
 function App() {
@@ -40,6 +41,16 @@ function App() {
     });
   };
 
+  const addDraft = (contactId, draft) => {
+    setContacts({
+      ...contacts,
+      [contactId]: {
+        ...contacts[contactId],
+        draft,
+      },
+    })
+  }
+
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=20")
       .then((res) => res.json())
@@ -58,6 +69,7 @@ function App() {
         messages,
         setSelectedContact,
         addMessage,
+        addDraft,
       }}
     >
       <Contacts />

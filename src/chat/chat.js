@@ -7,13 +7,21 @@ import "./chat.css";
 export const Chat = () => {
   const [text, setText] = useState("");
   const [flipper, flip] = useState(false);
-  const { selectedContact, messages, addMessage } = useContext(ChatContext);
+  const { selectedContact, messages, addMessage, addDraft } = useContext(ChatContext);
 
   const elementRef = useRef();
   useEffect(
     () => elementRef.current && elementRef.current.scrollIntoView(),
     [flipper]
   );
+
+  useEffect(() => {
+    selectedContact && addDraft(selectedContact.login.uuid, text);
+  }, [text]);
+
+  useEffect(() => {
+    selectedContact && setText(selectedContact.draft || []);
+  }, [selectedContact])
 
   const submitHandler = (e) => {
     e.preventDefault();
